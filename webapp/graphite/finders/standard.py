@@ -7,6 +7,7 @@ from graphite.node import BranchNode, LeafNode
 from graphite.readers import WhisperReader, GzippedWhisperReader, RRDReader
 from graphite.util import find_escaped_pattern_fields
 
+
 from . import fs_to_metric, get_real_metric_path, match_entries
 
 
@@ -18,7 +19,7 @@ class StandardFinder:
     self.directories = directories
 
   def find_nodes(self, query):
-    clean_pattern = query.pattern.replace('\\', '')
+    clean_pattern = quote(query.pattern,'.')
     pattern_parts = clean_pattern.split('.')
 
     for root_dir in self.directories:
