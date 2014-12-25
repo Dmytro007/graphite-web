@@ -6,7 +6,7 @@ from graphite.logger import log
 from graphite.node import BranchNode, LeafNode
 from graphite.readers import WhisperReader, GzippedWhisperReader, RRDReader
 from graphite.util import find_escaped_pattern_fields
-
+from urllib import quote
 
 from . import fs_to_metric, get_real_metric_path, match_entries
 
