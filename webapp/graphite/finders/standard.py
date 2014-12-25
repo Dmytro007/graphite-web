@@ -19,7 +19,7 @@ class StandardFinder:
     self.directories = directories
 
   def find_nodes(self, query):
-    clean_pattern = quote(query.pattern,'.')
+    clean_pattern = quote(query.pattern,'*?[{()}].-+%,)
     pattern_parts = clean_pattern.split('.')
 
     for root_dir in self.directories:
