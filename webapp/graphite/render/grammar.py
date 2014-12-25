@@ -4,6 +4,7 @@ from pyparsing import (
     nums, alphas, alphanums, printables, delimitedList, quotedString,
     __version__,
 )
+from string import printable
 
 ParserElement.enablePackrat()
 grammar = Forward()
@@ -80,7 +81,7 @@ call = Group(
 )('call')
 
 # Metric pattern (aka. pathExpression)
-validMetricChars = ''.join((set(printables) - set(symbols)))
+validMetricChars = ''.join((set(printable) - set(symbols)))
 escapedChar = backslash + Word(symbols, exact=1)
 partialPathElem = Combine(
   OneOrMore(
