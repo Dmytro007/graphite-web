@@ -21,6 +21,7 @@ from graphite.storage import STORE
 from graphite.metrics.search import searcher
 from graphite.carbonlink import CarbonLink
 import fnmatch, os
+from urllib import unquote
 
 try:
   import cPickle as pickle
@@ -280,7 +281,7 @@ def tree_json(nodes, base_path, wildcards=False):
 
     found.add(node.name)
     resultNode = {
-      'text' : str(node.name),
+      'text' : unquote(str(node.name)),
       'id' : base_path + str(node.name),
     }
 
